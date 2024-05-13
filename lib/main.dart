@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:uberapp/view/authScreens/mobilLoginScreen.dart';
+import 'package:uberapp/view/authScreens/otpScreen.dart';
+import 'package:uberapp/view/bottomNavigationBar/bottomNavigationBar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Sizer(builder: (context, orientation, deviceType) {
+    return Sizer(builder: (context, _, __) {
       return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Uber Eats',
-        theme: ThemeData(),
-        home: mobilLoginScreen(),
-      );
+          debugShowCheckedModeBanner: false,
+          title: 'Uber Eats',
+          theme: ThemeData(),
+          home: BottomNavigationBarApp());
     });
   }
 }
