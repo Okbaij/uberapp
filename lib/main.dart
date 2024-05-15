@@ -1,10 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+import 'package:uberapp/controller/provider/authProvider/authProvider.dart';
 import 'package:uberapp/firebase_options.dart';
 import 'package:uberapp/view/authScreens/mobilLoginScreen.dart';
 import 'package:uberapp/view/authScreens/otpScreen.dart';
 import 'package:uberapp/view/bottomNavigationBar/bottomNavigationBar.dart';
+import 'package:uberapp/view/sing%C4%B0nLogicScreen/sing%C4%B0nLogicScreen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,11 +23,18 @@ class uberapp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, _, __) {
-      return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Uber Eats',
-          theme: ThemeData(),
-          home: BottomNavigationBarApp());
+      return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => MobileAuthProvider(),
+          ),
+        ],
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Uber Eats',
+            theme: ThemeData(),
+            home: SingInLogicScreen()),
+      );
     });
   }
 }
