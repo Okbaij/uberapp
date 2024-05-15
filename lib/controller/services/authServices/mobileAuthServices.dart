@@ -48,7 +48,7 @@ class MobileAuthServices {
           Navigator.push(
             context,
             PageTransition(
-              child: const OTFScreen(),
+              child: const OTPScreen(),
               type: PageTransitionType.rightToLeft,
             ),
           );
@@ -71,7 +71,7 @@ class MobileAuthServices {
       Navigator.push(
         context,
         PageTransition(
-          child: const SingInLogicScreen(),
+          child: const SinginLogicScreen(),
           type: PageTransitionType.rightToLeft,
         ),
       );

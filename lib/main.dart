@@ -33,7 +33,7 @@ class uberapp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Uber Eats',
             theme: ThemeData(),
-            home: SingInLogicScreen()),
+            home: SinginLogicScreen()),
       );
     });
   }

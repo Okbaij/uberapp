@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+import 'package:uberapp/controller/provider/authProvider/authProvider.dart';
+import 'package:uberapp/controller/services/authServices/mobileAuthServices.dart';
 import 'package:uberapp/utils/colors.dart';
 import 'package:uberapp/utils/textStyles.dart';
 import 'package:country_picker/country_picker.dart';
@@ -15,6 +19,17 @@ class mobilLoginScreen extends StatefulWidget {
 class _mobilLoginScreenState extends State<mobilLoginScreen> {
   String selectedCountry = '+90';
   TextEditingController mobileController = TextEditingController();
+  bool receiveOTPButtonPressed = false;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPersistentFrameCallback((_) {
+      setState(() {
+        receiveOTPButtonPressed = false;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,27 +121,40 @@ class _mobilLoginScreenState extends State<mobilLoginScreen> {
           height: 3.h,
         ),
         ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                receiveOTPButtonPressed = true;
+              });
+              context.read<MobileAuthProvider>().updateMobileNumber(
+                  '$selectedCountry${mobileController.text.trim()}');
+              MobileAuthServices.receiveOTP(
+                  context: context,
+                  mobileNo: '$selectedCountry${mobileController.text.trim()}');
+            },
             style: ElevatedButton.styleFrom(
                 backgroundColor: black, minimumSize: Size(90.w, 6.h)),
-            child: Stack(
-              children: [
-                Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Sonraki',
-                    style: AppTextStyles.body16.copyWith(color: white),
-                  ),
-                ),
-                Positioned(
-                    right: 2.w,
-                    child: Icon(
-                      Icons.arrow_forward,
-                      color: white,
-                      size: 4.h,
-                    ))
-              ],
-            )),
+            child: receiveOTPButtonPressed
+                ? CircularProgressIndicator(
+                    color: white,
+                  )
+                : Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Sonraki',
+                          style: AppTextStyles.body16.copyWith(color: white),
+                        ),
+                      ),
+                      Positioned(
+                          right: 2.w,
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: white,
+                            size: 4.h,
+                          ))
+                    ],
+                  )),
         SizedBox(
           height: 3.w,
         ),
