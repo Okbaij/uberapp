@@ -22,7 +22,7 @@ class _SingInLogicScreenState extends State<SinginLogicScreen> {
     return const Scaffold(
       body: Image(
         image: AssetImage(
-          'assets/images/splashScreenImage/splashScreenImage.png',
+          'assets/images/splashScreenImage/SplashScreen.png',
         ),
       ),
     );

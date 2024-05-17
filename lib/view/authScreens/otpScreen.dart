@@ -9,8 +9,6 @@ import 'package:uberapp/utils/colors.dart';
 import 'package:uberapp/utils/textStyles.dart';
 import 'package:uberapp/controller/provider/authProvider/authProvider.dart';
 import 'package:uberapp/controller/services/authServices/mobileAuthServices.dart';
-import 'package:uberapp/utils/colors.dart';
-import 'package:uberapp/utils/textStyles.dart';
 
 class OTPScreen extends StatefulWidget {
   const OTPScreen({super.key});
