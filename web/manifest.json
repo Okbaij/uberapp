@@ -1,6 +1,6 @@
 {
-    "name": "uberapp",
-    "short_name": "uberapp",
+    "name": "uberapprestaurant",
+    "short_name": "uberapprestaurant",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,4 +1,4 @@
-# uberapp
+# uberapprestaurant
 
 A new Flutter project.
 
